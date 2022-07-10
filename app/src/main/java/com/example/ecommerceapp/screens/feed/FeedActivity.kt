@@ -35,7 +35,7 @@ class FeedActivity : AppCompatActivity(), IFeedRVAdapter  {
         itemList.shuffle()
         val adapter = FeedRVAdapter(this, this, itemList)
         binding.feedRv.adapter = adapter
-
+        binding.toolbarTitle.text = "Home"
         binding.cartIcon.setOnClickListener {
             val intent = Intent(this, CartActivity::class.java)
             startActivity(intent)

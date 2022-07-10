@@ -39,7 +39,7 @@ class CartActivity : AppCompatActivity(), ICartRVAdapter {
 
     override fun onItemClicked(cartItem: CartItem) {
         viewModel.deleteItem(cartItem)
-        Toast.makeText(this,"${cartItem.title} deleted", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"${cartItem.title} removed", Toast.LENGTH_SHORT).show()
     }
 
     fun placeOrder(view: View) {

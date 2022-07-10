@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.ecommerceapp.R
 import com.example.ecommerceapp.screens.feed.model.ProductItem
 
@@ -30,7 +31,7 @@ class FeedRVAdapter(private val context: Context, private val listener: IFeedRVA
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val currentItem = allItems[position]
-        holder.image.setImageURI(currentItem.getImage()?.toUri())
+        Glide.with(holder.itemView.context).load(currentItem.getImage()).into(holder.image)
         holder.title.text = currentItem.getTitle()
         holder.price.text = "Price: ${currentItem.getPrice()}₹"
     }
