@@ -42,32 +42,6 @@ class CartActivity : AppCompatActivity(), ICartRVAdapter {
         Toast.makeText(this,"${cartItem.title} deleted", Toast.LENGTH_SHORT).show()
     }
 
-    fun submitData(view: View) {
-        val image = binding.image.text.toString()
-        val title = binding.title.text.toString()
-        val price = binding.price.text.toString()
-        val quantity = binding.quantity.text.toString()
-        val id = binding.id.text.toString()
-
-        val item : CartItem = CartItem(
-            title = title,
-            image = image,
-            price = price,
-            quantity = quantity,
-            id = id.toInt()
-        )
-
-        if(image.isNotEmpty()
-            && title.isNotEmpty()
-            && price.isNotEmpty()
-            && quantity.isNotEmpty()
-            && id.isNotEmpty()
-        ) {
-            viewModel.insertItem(item)
-            Toast.makeText(this,"${item.title} inserted ", Toast.LENGTH_SHORT).show()
-        }
-    }
-
     fun placeOrder(view: View) {
         viewModel.deleteAllItem()
         Toast.makeText(this,"Order placed", Toast.LENGTH_SHORT).show()

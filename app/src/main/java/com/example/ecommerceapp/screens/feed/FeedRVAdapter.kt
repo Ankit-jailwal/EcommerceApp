@@ -13,7 +13,6 @@ import com.example.ecommerceapp.R
 import com.example.ecommerceapp.screens.feed.model.ProductItem
 
 class FeedRVAdapter(private val context: Context, private val listener: IFeedRVAdapter, private var allItems : ArrayList<ProductItem>):RecyclerView.Adapter<FeedRVAdapter.CartViewHolder>() {
-
     inner class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.image)
         val title: TextView = itemView.findViewById(R.id.title)
