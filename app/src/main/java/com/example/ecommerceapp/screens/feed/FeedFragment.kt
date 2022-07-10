@@ -73,7 +73,7 @@ class FeedFragment : Fragment(), IFeedRVAdapter  {
     private fun loadJSONFromAsset(): String? {
         val json: String?
         try {
-            val inputStream = context?.getAssets()?.open("homefeed.txt")
+            val inputStream = context?.assets?.open("homefeed.json")
             val size = inputStream?.available()
             val buffer = size?.let { ByteArray(it) }
             val charset: Charset = Charsets.UTF_8

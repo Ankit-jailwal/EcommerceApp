@@ -1,28 +1,34 @@
 package com.example.ecommerceapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ecommerceapp.databinding.ActivityMainBinding
-import com.example.ecommerceapp.screens.cart.database.CartItem
-import com.example.ecommerceapp.screens.cart.viewModel.CartViewModel
-import com.example.ecommerceapp.screens.feed.FeedFragment
-import com.example.ecommerceapp.screens.ui.main.TestFragment
+import com.example.ecommerceapp.screens.feed.FeedActivity
+import com.example.ecommerceapp.screens.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
+    private val SPLASH_TIME_OUT : Int = 200
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.feedContainer, FeedFragment.newInstance())
-                .commitNow()
-        }
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            val sharedPreferences = getSharedPreferences(LoginActivity().PREFS_NAME, 0)
+            val hasLoggedIn : Boolean = sharedPreferences.getBoolean("hasLoggedIn",false)
+
+            if(hasLoggedIn){
+                val intent = Intent(this,FeedActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            }, SPLASH_TIME_OUT.toLong())
     }
 
 }

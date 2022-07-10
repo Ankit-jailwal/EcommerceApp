@@ -45,5 +45,6 @@ class CartActivity : AppCompatActivity(), ICartRVAdapter {
     fun placeOrder(view: View) {
         viewModel.deleteAllItem()
         Toast.makeText(this,"Order placed", Toast.LENGTH_SHORT).show()
+        finish()
     }
 }

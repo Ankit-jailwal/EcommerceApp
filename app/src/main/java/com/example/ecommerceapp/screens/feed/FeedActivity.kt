@@ -31,11 +31,14 @@ class FeedActivity : AppCompatActivity(), IFeedRVAdapter  {
         val binding: ActivityFeedBinding = ActivityFeedBinding.inflate(layoutInflater)
         val layoutManager = GridLayoutManager(this, 2)
         binding.feedRv.layoutManager = layoutManager
-        addItemsFromJSON()
+        itemList = FeedRepository().addItemsFromJSON(this)
         itemList.shuffle()
         val adapter = FeedRVAdapter(this, this, itemList)
         binding.feedRv.adapter = adapter
         binding.toolbarTitle.text = "Home"
+        binding.toolbarBack.setOnClickListener {
+            onBackPressed()
+        }
         binding.cartIcon.setOnClickListener {
             val intent = Intent(this, CartActivity::class.java)
             startActivity(intent)
@@ -54,47 +57,5 @@ class FeedActivity : AppCompatActivity(), IFeedRVAdapter  {
         )
         viewModel.insertItem(cartItem)
         Toast.makeText(this,"Item added to cart", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun addItemsFromJSON() {
-        try {
-            val obj = JSONObject(loadJSONFromAsset())
-            val productArray = obj.getJSONArray("products")
-            for (i in 0 until productArray.length()) {
-                val userDetail = productArray.getJSONObject(i)
-                val title = userDetail.getString("title")
-                val image = userDetail.getString("image")
-                val price = userDetail.getString("price")
-                val id = userDetail.getString("id")
-                val item = ProductItem(
-                    image = image,
-                    title = title,
-                    price = price.toInt(),
-                    id = id.toInt()
-                )
-                itemList.add(item)
-            }
-        }
-        catch (e: JSONException) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun loadJSONFromAsset(): String {
-        val json: String?
-        try {
-            val inputStream = assets.open("homefeed.json")
-            val size = inputStream.available()
-            val buffer = ByteArray(size)
-            val charset: Charset = Charsets.UTF_8
-            inputStream.read(buffer)
-            inputStream.close()
-            json = String(buffer, charset)
-        }
-        catch (ex: IOException) {
-            ex.printStackTrace()
-            return ""
-        }
-        return json
     }
 }
