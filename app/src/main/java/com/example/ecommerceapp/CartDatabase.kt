@@ -22,7 +22,7 @@ abstract class CartDatabase: RoomDatabase() {
                     "cart_database"
                 ).build()
                 INSTANCE = instance
-                // return instance
+
                 instance
             }
         }

@@ -62,7 +62,10 @@ class MainActivity : AppCompatActivity(), ICartRVAdapter {
             viewModel.insertItem(item)
             Toast.makeText(this,"${item.title} inserted ", Toast.LENGTH_SHORT).show()
         }
+    }
 
-
+    fun placeOrder(view: View) {
+        viewModel.deleteAllItem()
+        Toast.makeText(this,"Order placed", Toast.LENGTH_SHORT).show()
     }
 }

@@ -26,4 +26,8 @@ class CartViewModel(application: Application) : AndroidViewModel(application){
      fun insertItem(cartItem: CartItem) = viewModelScope.launch(Dispatchers.IO) {
           repository.insert(cartItem)
      }
+
+     fun deleteAllItem() = viewModelScope.launch(Dispatchers.IO) {
+          repository.deleteAllItem()
+     }
 }
