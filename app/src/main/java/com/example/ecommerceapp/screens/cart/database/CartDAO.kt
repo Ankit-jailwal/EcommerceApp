@@ -1,7 +1,8 @@
-package com.example.ecommerceapp
+package com.example.ecommerceapp.screens.cart.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.ecommerceapp.screens.cart.database.CartItem
 
 @Dao
 interface CartDAO {

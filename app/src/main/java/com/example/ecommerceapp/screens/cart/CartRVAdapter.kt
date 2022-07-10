@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ecommerceapp.screens.cart.database.CartItem
 
 class CartRVAdapter(private val context: Context, private val listener: ICartRVAdapter):RecyclerView.Adapter<CartRVAdapter.CartViewHolder>() {
 

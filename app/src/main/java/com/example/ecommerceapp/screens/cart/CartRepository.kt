@@ -1,6 +1,8 @@
-package com.example.ecommerceapp
+package com.example.ecommerceapp.screens.cart
 
 import androidx.lifecycle.LiveData
+import com.example.ecommerceapp.screens.cart.database.CartItem
+import com.example.ecommerceapp.screens.cart.database.CartDAO
 
 class CartRepository(private val cartDAO: CartDAO) {
 

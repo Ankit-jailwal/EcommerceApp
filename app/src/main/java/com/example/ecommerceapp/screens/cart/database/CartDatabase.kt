@@ -1,4 +1,4 @@
-package com.example.ecommerceapp
+package com.example.ecommerceapp.screens.cart.database
 
 import android.content.Context
 import androidx.room.Database

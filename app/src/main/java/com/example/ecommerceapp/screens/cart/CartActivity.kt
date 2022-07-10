@@ -7,17 +7,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ecommerceapp.databinding.ActivityCartBinding
 import com.example.ecommerceapp.databinding.ActivityMainBinding
 import com.example.ecommerceapp.screens.cart.database.CartItem
 import com.example.ecommerceapp.screens.cart.viewModel.CartViewModel
 
-class MainActivity : AppCompatActivity(), ICartRVAdapter {
+class CartActivity : AppCompatActivity(), ICartRVAdapter {
     private lateinit var viewModel: CartViewModel
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityCartBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityCartBinding.inflate(layoutInflater)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = CartRVAdapter(this,this)
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity(), ICartRVAdapter {
         val view = binding.root
 
         viewModel = ViewModelProvider(this,
-                ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
+            ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
             CartViewModel::class.java)
 
         viewModel.allItems.observe(this, Observer { list ->

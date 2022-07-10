@@ -1,10 +1,12 @@
-package com.example.ecommerceapp
+package com.example.ecommerceapp.screens.cart.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.ecommerceapp.screens.cart.database.CartDatabase
+import com.example.ecommerceapp.screens.cart.database.CartItem
+import com.example.ecommerceapp.screens.cart.CartRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
