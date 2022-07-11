@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ecommerceapp.R
-import com.example.ecommerceapp.screens.feed.model.ProductItem
+import com.example.ecommerceapp.screens.feed.model.ProductModel
 
-class FeedRVAdapter(private val context: Context, private val listener: IFeedRVAdapter, private var allItems : ArrayList<ProductItem>):RecyclerView.Adapter<FeedRVAdapter.CartViewHolder>() {
+class FeedRVAdapter(private val context: Context, private val listener: IFeedRVAdapter, private var allItems : ArrayList<ProductModel>):RecyclerView.Adapter<FeedRVAdapter.CartViewHolder>() {
     inner class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.image)
         val title: TextView = itemView.findViewById(R.id.title)
@@ -43,5 +42,5 @@ class FeedRVAdapter(private val context: Context, private val listener: IFeedRVA
 }
 
 interface IFeedRVAdapter {
-    fun onItemClicked(item: ProductItem)
+    fun onItemClicked(item: ProductModel)
 }

@@ -1,7 +1,7 @@
 package com.example.ecommerceapp.screens.feed
 
 import android.content.Context
-import com.example.ecommerceapp.screens.feed.model.ProductItem
+import com.example.ecommerceapp.screens.feed.model.ProductModel
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
@@ -9,8 +9,8 @@ import java.nio.charset.Charset
 
 class FeedRepository() {
 
-    fun addItemsFromJSON(context: Context): ArrayList<ProductItem> {
-        var itemList: ArrayList<ProductItem> = ArrayList()
+    fun addItemsFromJSON(context: Context): ArrayList<ProductModel> {
+        var itemList: ArrayList<ProductModel> = ArrayList()
         try {
             val obj = JSONObject(loadJSONFromAsset(context))
             val productArray = obj.getJSONArray("products")
@@ -20,7 +20,7 @@ class FeedRepository() {
                 val image = userDetail.getString("image")
                 val price = userDetail.getString("price")
                 val id = userDetail.getString("id")
-                val item = ProductItem(
+                val item = ProductModel(
                     image = image,
                     title = title,
                     price = price.toInt(),

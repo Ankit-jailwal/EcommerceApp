@@ -1,6 +1,6 @@
 package com.example.ecommerceapp.screens.feed.model
 
-class ProductItem {
+class ProductModel {
     private var image:String
     private var title:String
     private var price: Int

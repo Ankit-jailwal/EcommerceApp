@@ -35,8 +35,8 @@ class CartRVAdapter(private val context: Context, private val listener: ICartRVA
         val currentItem = allItems[position]
         Glide.with(holder.itemView.context).load(currentItem.image).into(holder.image)
         holder.title.text = currentItem.title
-        holder.price.text = "Price: ${currentItem.price}₹"
-        holder.quantity.text = "Quantity: ${currentItem.quantity}"
+        "Price: ${currentItem.price}₹".also { holder.price.text = it }
+        "Quantity: ${currentItem.quantity}".also { holder.quantity.text = it }
     }
 
     override fun getItemCount(): Int {

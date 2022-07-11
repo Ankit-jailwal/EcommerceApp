@@ -14,14 +14,10 @@ import com.example.ecommerceapp.screens.feed.FeedActivity
 
 class LoginActivity : AppCompatActivity() {
 
-    val PREFS_NAME : String = "MyPrefsFile"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val button: Button = findViewById(R.id.login_button)
         val binding: ActivityLoginBinding = ActivityLoginBinding.inflate(layoutInflater)
-//        val Username = findViewById<EditText>(R.id.username)
-//        val Password = findViewById<EditText>(R.id.password)
         binding.loginButton.setOnClickListener {
             val username = binding.username.text.toString()
             val password = binding.password.text.toString()
@@ -30,15 +26,15 @@ class LoginActivity : AppCompatActivity() {
                 username,
                 password
             )) {
-                val sharedPreferences = getSharedPreferences(PREFS_NAME, 0)
+                val sharedPreferences = getSharedPreferences(LoginConstants().PREFS_NAME, 0)
                 val editor = sharedPreferences.edit()
-                editor.putBoolean("hasLoggedIn", true)
+                editor.putBoolean(LoginConstants().IS_LOGGED_IN, true)
                 editor.commit()
 
                 startActivity(Intent(this, FeedActivity::class.java))
                 finish()
             } else
-                Toast.makeText(this,"Invalid credentials",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,LoginConstants().LOGIN_FAILED,Toast.LENGTH_SHORT).show()
         }
         setContentView(binding.root)
     }

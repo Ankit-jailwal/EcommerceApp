@@ -7,6 +7,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ecommerceapp.screens.feed.FeedActivity
 import com.example.ecommerceapp.screens.login.LoginActivity
+import com.example.ecommerceapp.screens.login.LoginConstants
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,8 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
 
-            val sharedPreferences = getSharedPreferences(LoginActivity().PREFS_NAME, 0)
-            val hasLoggedIn : Boolean = sharedPreferences.getBoolean("hasLoggedIn",false)
+            val sharedPreferences = getSharedPreferences(LoginConstants().PREFS_NAME, 0)
+            val hasLoggedIn : Boolean = sharedPreferences.getBoolean(LoginConstants().IS_LOGGED_IN,false)
 
             if(hasLoggedIn){
                 val intent = Intent(this,FeedActivity::class.java)
