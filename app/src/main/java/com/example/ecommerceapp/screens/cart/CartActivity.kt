@@ -8,7 +8,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ecommerceapp.databinding.ActivityCartBinding
-import com.example.ecommerceapp.databinding.ActivityMainBinding
 import com.example.ecommerceapp.screens.cart.database.CartItem
 import com.example.ecommerceapp.screens.cart.viewModel.CartViewModel
 

@@ -7,18 +7,19 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ecommerceapp.screens.feed.FeedActivity
 import com.example.ecommerceapp.screens.login.LoginActivity
-import com.example.ecommerceapp.screens.login.LoginConstants
+
 
 class MainActivity : AppCompatActivity() {
 
     private val SPLASH_TIME_OUT : Int = 200
+    private val constants = Constants()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         Handler(Looper.getMainLooper()).postDelayed({
 
-            val sharedPreferences = getSharedPreferences(LoginConstants().PREFS_NAME, 0)
-            val hasLoggedIn : Boolean = sharedPreferences.getBoolean(LoginConstants().IS_LOGGED_IN,false)
+            val sharedPreferences = getSharedPreferences(constants.PREFS_NAME, 0)
+            val hasLoggedIn : Boolean = sharedPreferences.getBoolean(constants.IS_LOGGED_IN,false)
 
             if(hasLoggedIn){
                 val intent = Intent(this,FeedActivity::class.java)
