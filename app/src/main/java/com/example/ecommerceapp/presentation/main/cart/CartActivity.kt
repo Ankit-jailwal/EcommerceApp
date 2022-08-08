@@ -1,15 +1,15 @@
-package com.example.ecommerceapp
+package com.example.ecommerceapp.presentation.main.cart
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ecommerceapp.CartRVAdapter
+import com.example.ecommerceapp.ICartRVAdapter
 import com.example.ecommerceapp.databinding.ActivityCartBinding
-import com.example.ecommerceapp.screens.cart.database.CartItem
-import com.example.ecommerceapp.screens.cart.viewModel.CartViewModel
+import com.example.ecommerceapp.model.CartItem
 
 class CartActivity : AppCompatActivity(), ICartRVAdapter {
     private lateinit var viewModel: CartViewModel
@@ -18,32 +18,31 @@ class CartActivity : AppCompatActivity(), ICartRVAdapter {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCartBinding.inflate(layoutInflater)
-
+        val view = binding.root
+        setContentView(view)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = CartRVAdapter(this,this)
         binding.recyclerView.adapter = adapter
-        val view = binding.root
 
+        binding.orderButton.setOnClickListener {
+            viewModel.deleteAllItem()
+            Toast.makeText(this,"Order placed", Toast.LENGTH_SHORT).show()
+            finish()
+        }
         viewModel = ViewModelProvider(this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
             CartViewModel::class.java)
 
-        viewModel.allItems.observe(this, Observer { list ->
+        viewModel.allItems.observe(this) { list ->
             list?.let {
                 adapter.updateList(list)
             }
-        })
-        setContentView(view)
+        }
+
     }
 
     override fun onItemClicked(cartItem: CartItem) {
         viewModel.deleteItem(cartItem)
         Toast.makeText(this,"${cartItem.title} removed", Toast.LENGTH_SHORT).show()
-    }
-
-    fun placeOrder(view: View) {
-        viewModel.deleteAllItem()
-        Toast.makeText(this,"Order placed", Toast.LENGTH_SHORT).show()
-        finish()
     }
 }

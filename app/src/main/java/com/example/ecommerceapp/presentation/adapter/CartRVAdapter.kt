@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.ecommerceapp.screens.cart.database.CartItem
+import com.example.ecommerceapp.model.CartItem
 
 class CartRVAdapter(private val context: Context, private val listener: ICartRVAdapter):RecyclerView.Adapter<CartRVAdapter.CartViewHolder>() {
 

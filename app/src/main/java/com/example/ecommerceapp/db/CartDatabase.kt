@@ -1,9 +1,10 @@
-package com.example.ecommerceapp.screens.cart.database
+package com.example.ecommerceapp.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.ecommerceapp.model.CartItem
 
 @Database(entities = arrayOf(CartItem::class), version = 1, exportSchema = false)
 abstract class CartDatabase: RoomDatabase() {

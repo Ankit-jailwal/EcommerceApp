@@ -14,19 +14,19 @@
         android:theme="@style/Theme.EcommerceApp"
         tools:targetApi="31">
         <activity
-            android:name=".screens.login.LoginActivity"
+            android:name=".presentation.main.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.feed.FeedActivity"
+            android:name=".presentation.main.feed.FeedActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.TestActivity"
+            android:name=".presentation.TestActivity"
             android:exported="false" />
         <activity
-            android:name=".CartActivity"
+            android:name=".presentation.main.cart.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

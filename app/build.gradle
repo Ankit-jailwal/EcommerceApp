@@ -49,6 +49,7 @@ def kotlin_version = '1.5.31'
 dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.activity:activity-ktx:$rootProject.activityVersion"
+    implementation "com.github.skydoves:transformationlayout:1.0.7"
 
     // Dependencies for working with Architecture components
     // You'll probably have to update the version numbers in build.gradle (Project)

@@ -1,8 +1,8 @@
-package com.example.ecommerceapp.screens.cart.database
+package com.example.ecommerceapp.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.ecommerceapp.screens.cart.database.CartItem
+import com.example.ecommerceapp.model.CartItem
 
 @Dao
 interface CartDAO {
@@ -17,4 +17,10 @@ interface CartDAO {
 
     @Query("DELETE FROM cart_table")
     suspend fun deleteAll()
+
+    @Query("UPDATE cart_table SET quantity = quantity + 1 where id = :id")
+    suspend fun updateQuantity(id : Int)
+
+    @Query("UPDATE cart_table SET price = :basePrice*quantity where id = :id")
+    suspend fun updatePrice(id : Int, basePrice: Int)
 }

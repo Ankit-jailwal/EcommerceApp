@@ -1,16 +1,12 @@
-package com.example.ecommerceapp.screens.cart
+package com.example.ecommerceapp.presentation.main.cart
 
 import androidx.lifecycle.LiveData
-import com.example.ecommerceapp.screens.cart.database.CartItem
-import com.example.ecommerceapp.screens.cart.database.CartDAO
+import com.example.ecommerceapp.model.CartItem
+import com.example.ecommerceapp.db.CartDAO
 
 class CartRepository(private val cartDAO: CartDAO) {
 
     val allCartItems: LiveData<List<CartItem>> = cartDAO.getAllItems()
-
-    suspend fun insert(cartItem: CartItem){
-        cartDAO.insert(cartItem)
-    }
 
     suspend fun delete(cartItem: CartItem){
         cartDAO.delete(cartItem)

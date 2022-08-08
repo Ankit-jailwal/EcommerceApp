@@ -1,12 +1,12 @@
-package com.example.ecommerceapp.screens.cart.viewModel
+package com.example.ecommerceapp.presentation.main.cart
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.ecommerceapp.screens.cart.database.CartDatabase
-import com.example.ecommerceapp.screens.cart.database.CartItem
-import com.example.ecommerceapp.screens.cart.CartRepository
+import com.example.ecommerceapp.db.CartDatabase
+import com.example.ecommerceapp.model.CartItem
+import com.example.ecommerceapp.presentation.main.cart.CartRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -23,10 +23,6 @@ class CartViewModel(application: Application) : AndroidViewModel(application){
 
      fun deleteItem(cartItem: CartItem) = viewModelScope.launch(Dispatchers.IO) {
           repository.delete(cartItem)
-     }
-
-     fun insertItem(cartItem: CartItem) = viewModelScope.launch(Dispatchers.IO) {
-          repository.insert(cartItem)
      }
 
      fun deleteAllItem() = viewModelScope.launch(Dispatchers.IO) {
